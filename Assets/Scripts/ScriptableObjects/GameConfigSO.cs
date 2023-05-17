@@ -7,5 +7,8 @@ namespace ScriptableObjects
     public class GameConfigSO : ScriptableObject
     {
         public ReadFrom ReadFrom;
+        
+        [Range(10, 1000)]
+        public int AnimationDuration;
     }
 }

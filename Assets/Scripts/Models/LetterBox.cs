@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,12 @@ namespace Models
             if (c == '-')
                 _image.enabled = false;
             else
-                _text.text = c.ToString().ToLower();
+                _text.text = c.ToString();
+        }
+        
+        public void Show()
+        {
+            _text.transform.DOScale(Vector3.one, 1f);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Data;
 using Infrastructure;
 using Newtonsoft.Json;
@@ -45,7 +46,7 @@ namespace Utilities
             }
             else
             {
-                    Debug.LogError("JSON file does not exist at the specified path: " + path);
+                throw new Exception("JSON file does not exist at the specified path: " + path);
             }
 
             return null;

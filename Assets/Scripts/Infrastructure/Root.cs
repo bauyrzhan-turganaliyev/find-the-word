@@ -1,3 +1,5 @@
+using Grid;
+using UI;
 using UnityEngine;
 using Utilities;
 using Zenject;
@@ -6,22 +8,19 @@ namespace Infrastructure
 {
     public class Root : MonoBehaviour
     {
-        private GridGeneratorService _gridGeneratorService;
+        private GridDataService _gridDataService;
+        private InputService _inputService;
 
         [Inject]
-        public void Construct(GridGeneratorService gridGeneratorService)
+        public void Construct(GridDataService gridDataService, InputService inputService)
         {
-            _gridGeneratorService = gridGeneratorService;
+            _gridDataService = gridDataService;
+            _inputService = inputService;
         }
         private void Awake()
         {
-            _gridGeneratorService.GenerateGrid(JsonReader.GetLevels());
+            _gridDataService.StartGeneration(JsonReader.GetLevels());
+            _inputService.Init();
         }
-    }
-
-    public enum ReadFrom
-    {
-        ByLetters,
-        ByWords,
     }
 }
