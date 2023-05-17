@@ -11,7 +11,7 @@ namespace Models
 
         public void SetLetter(char c)
         {
-            if (c == '.')
+            if (c == '-')
                 _image.enabled = false;
             else
                 _text.text = c.ToString().ToLower();

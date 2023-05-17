@@ -1,21 +1,27 @@
-using System;
 using UnityEngine;
 using Utilities;
+using Zenject;
 
 namespace Infrastructure
 {
     public class Root : MonoBehaviour
     {
-        [SerializeField] private GridGenerator _gridGenerator;
-        [SerializeField] private int _level;
+        private GridGeneratorService _gridGeneratorService;
+
+        [Inject]
+        public void Construct(GridGeneratorService gridGeneratorService)
+        {
+            _gridGeneratorService = gridGeneratorService;
+        }
         private void Awake()
         {
-            string filePath = Application.dataPath + "/Configs/JSONs/levels.json";
-            var levels = JsonReader.GetLevels(filePath);
-            if (levels == null)
-                Debug.LogError("JSON file does not exist at the specified path: " + filePath);
-            
-            _gridGenerator.GenerateGrid(levels.levels[_level]);
+            _gridGeneratorService.GenerateGrid(JsonReader.GetLevels());
         }
+    }
+
+    public enum ReadFrom
+    {
+        ByLetters,
+        ByWords,
     }
 }

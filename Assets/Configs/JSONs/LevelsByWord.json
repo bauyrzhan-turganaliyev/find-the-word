@@ -1,0 +1,21 @@
+{
+  "levels": [
+    {
+      "gridSize": 10,
+      "wordsList": [
+        "telephone",
+        "elephant",
+        "apple",
+        "monkey",
+        "eat"
+      ]
+    },
+    {
+      "gridSize": 8,
+      "wordsList": [
+        "good",
+        "seed"
+      ]
+    }
+  ]
+}
